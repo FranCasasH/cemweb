@@ -3,13 +3,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MenuComponent],
+  imports: [MenuComponent, ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -37,7 +38,6 @@ export class HomeComponent implements AfterViewInit {
             end: `+=${slides.length * 100}%`,
             scrub: true,
             pin: true
-            // markers: true
           },
           defaults: { ease: "none" }
         });
@@ -73,7 +73,7 @@ export class HomeComponent implements AfterViewInit {
             onUpdate: (self) => {
               gsap.to(card.id, {
                 x: `${card.endTranslateX * self.progress}px`,
-                rotate: `${card.rotate * self.progress *2}`,
+                rotate: `${card.rotate * self.progress * 2}`,
                 duration: 0.5,
                 ease: "power3.Out",
               });
@@ -96,6 +96,86 @@ export class HomeComponent implements AfterViewInit {
           }
         });
       });
+
+      const lenis = new Lenis();
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      ScrollTrigger.create({
+        trigger: ".pinned",
+        start: "top top",
+        endTrigger: ".whitespace",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+      });
+
+      ScrollTrigger.create({
+        trigger: ".appInfo",
+        start: "top top",
+        endTrigger: ".whitespace",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+      });
+
+      ScrollTrigger.create({
+        trigger: ".pinned",
+        start: "top top",
+        endTrigger: ".appInfo",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+          const rotation = self.progress * 360;
+          const progress = self.progress;
+          const clipPath = `polygon(
+            ${45 - 45 * progress}% ${0 + 0 * progress}%,
+            ${55 + 45 * progress}% ${0 + 0 * progress}%,
+            ${55 + 45 * progress}% ${100 - 0 * progress}%,
+            ${45 - 45 * progress}% ${100 - 0 * progress}%
+          )`;
+          gsap.to(".revealer", { rotation });
+          gsap.to(".revealer1, .revealer2", {
+            clipPath: clipPath,
+            ease: "none",
+            duration: 0,
+          });
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: ".appInfo",
+        start: "top top",
+        end: "bottom 50%",
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const left = 35 + 15 * progress;
+          gsap.to(".revealer", {
+            left: `${left}%`,
+            ease: "none",
+            duration: 0,
+          })
+        }
+      })
+      
+    ScrollTrigger.create({
+      trigger: ".whitespace",
+      start: "top 50%",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: (self) => {
+        const scale = 1 + 15 * self.progress;
+        gsap.to(".revealer", {
+          scale: scale,
+          ease: "none",
+          duration: 0,
+        });
+      }
+    })
+
     }
   }
 }
