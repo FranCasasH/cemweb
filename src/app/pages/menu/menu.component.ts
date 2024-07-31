@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,6 +7,7 @@ import { Component, AfterViewInit } from '@angular/core';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent implements AfterViewInit {
   constructor() {}
 
@@ -14,6 +15,21 @@ export class MenuComponent implements AfterViewInit {
     if (typeof document !== 'undefined') {
       const links = document.querySelectorAll('nav > .hover-this');
       const cursor = document.querySelector('.cursor') as HTMLElement;
+      const cubeBOrange = document.querySelector('.cubeB[data-type="orange"]') as HTMLElement;
+
+        // Hide the cubeB with data-type="orange" initially
+      cubeBOrange.classList.add('hidden');
+
+      // Show the cubeB with data-type="orange" after scrolling 100vh
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= window.innerHeight) {
+          cubeBOrange.classList.add('visible');
+          cubeBOrange.classList.remove('hidden');
+        } else {
+          cubeBOrange.classList.add('hidden');
+          cubeBOrange.classList.remove('visible');
+        }
+      });
 
       const animateit: EventListener = function (this: HTMLElement, e: Event) {
         const event = e as MouseEvent;

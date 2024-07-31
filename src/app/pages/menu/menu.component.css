@@ -43,6 +43,7 @@ span {
 }
 
 .cursor {
+    z-index: 9999;
     pointer-events: none;
     position: fixed;
     padding: 0.3rem;
@@ -53,6 +54,118 @@ span {
 
 .hover-this:hover ~ .cursor {
     transform: translate(-50%, -50%) scale(8);
+}
+
+.cubeB{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    animation: upDown 3s infinite;
+}
+
+.cubeM{
+    position:absolute;
+    width: 100px;
+    height: 100px;
+    animation: upDownM 4s infinite;
+}
+
+.cubeS{
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    animation: upDownS 5s infinite;
+}
+
+.cubeM[data-type="orange"] {
+    z-index: 2;
+    background-color: #D67F1F; 
+    rotate: 25deg;
+    top: 10%;
+    left: 10%;
+}
+
+.cubeB[data-type="blue"] {
+    z-index: 3;
+    top: -5%;
+    left: -5%;
+    background-color: midnightblue; 
+    rotate: -25deg;
+  }
+
+  .cubeS[data-type="cian"] {
+    z-index: 1;
+    top: 10%;
+    left: 18%;
+    rotate: -5deg;
+    background-color: #30579C; 
+  }
+
+/* 2d part */
+  .cubeB[data-type="orange"] {
+    position: fixed;
+    z-index: 999;
+    bottom: -15%;
+    right: -10%;
+    background-color: #D67F1F; 
+    rotate: -25deg;
+  }
+  .arrow{
+    margin: 8% 0 0 12%;
+    width: 50px;
+    rotate: 200deg;
+  }
+
+  .cubeM[data-type="cian"] {
+    z-index: 2;
+    background-color: #30579C; 
+    rotate: 25deg;
+    top: 5%;
+    right: 7%;
+}
+
+.cubeS[data-type="blue"] {
+    z-index: 3;
+    bottom:  5%;
+    left: 3%;
+    rotate: -5deg;
+    background-color: midnightblue; 
+  }
+
+  .hidden {
+    display: none;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  @keyframes upDown {
+    0%, 100% {
+        transform: translateY(-3%);
+    }
+    50% {
+        transform: translateY(3%);
+    }
+}
+
+@keyframes upDownM {
+    0%, 100% {
+        transform: translateY(-8%);
+    }
+    50% {
+        transform: translateY(8%);
+    }
+}
+@keyframes upDownS {
+    0%, 100% {
+        transform: translateY(-10%);
+    }
+    50% {
+        transform: translateY(10%);
+    }
 }
 
 @media(min-width: 900px) {

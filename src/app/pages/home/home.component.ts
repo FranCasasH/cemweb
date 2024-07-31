@@ -21,7 +21,7 @@ export class HomeComponent implements AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
       const slides = document.querySelectorAll(".js-slide");
-
+      
       // Initial State
       slides.forEach((slide, idx) => {
         if (idx === 0) return;
