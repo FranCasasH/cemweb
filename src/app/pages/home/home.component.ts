@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { gsap } from "gsap";
@@ -21,7 +21,35 @@ export class HomeComponent implements AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
       const slides = document.querySelectorAll(".js-slide");
-      
+
+      window.addEventListener("load", () => {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: ".wrapperzoom",
+              start: "top top",
+              end: "+=150%",
+              pin: true,
+              scrub: true,
+            }
+          })
+          .to("img", {
+            scale: 2,
+            z: 350,
+            transformOrigin: "center center",
+            ease: "power1.inOut"
+          })
+          .to(
+            ".section.hero",
+            {
+              scale: 1.1,
+              transformOrigin: "center center",
+              ease: "power1.inOut"
+            },
+            "<"
+          );
+      });
+
       // Initial State
       slides.forEach((slide, idx) => {
         if (idx === 0) return;

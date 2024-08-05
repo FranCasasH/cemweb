@@ -103,13 +103,21 @@ span {
 
 /* 2d part */
   .cubeB[data-type="orange"] {
-    position: fixed;
-    z-index: 999;
+    position: absolute;
     bottom: -15%;
     right: -10%;
     background-color: #D67F1F; 
     rotate: -25deg;
   }
+  .cubeB[data-type="fix"] {
+    position: fixed;
+    bottom: -15%;
+    z-index: 999;
+    right: -10%;
+    background-color: #30579C; 
+    rotate: -25deg;
+  }
+  
   .arrow{
     margin: 8% 0 0 12%;
     width: 50px;

@@ -15,19 +15,19 @@ export class MenuComponent implements AfterViewInit {
     if (typeof document !== 'undefined') {
       const links = document.querySelectorAll('nav > .hover-this');
       const cursor = document.querySelector('.cursor') as HTMLElement;
-      const cubeBOrange = document.querySelector('.cubeB[data-type="orange"]') as HTMLElement;
+      const cubeBfix = document.querySelector('.cubeB[data-type="fix"]') as HTMLElement;
 
         // Hide the cubeB with data-type="orange" initially
-      cubeBOrange.classList.add('hidden');
+      cubeBfix.classList.add('hidden');
 
       // Show the cubeB with data-type="orange" after scrolling 100vh
       window.addEventListener('scroll', () => {
         if (window.scrollY >= window.innerHeight) {
-          cubeBOrange.classList.add('visible');
-          cubeBOrange.classList.remove('hidden');
+          cubeBfix.classList.add('visible');
+          cubeBfix.classList.remove('hidden');
         } else {
-          cubeBOrange.classList.add('hidden');
-          cubeBOrange.classList.remove('visible');
+          cubeBfix.classList.add('hidden');
+          cubeBfix.classList.remove('visible');
         }
       });
 
