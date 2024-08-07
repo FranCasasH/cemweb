@@ -21,6 +21,31 @@ export class HomeComponent implements AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
       const slides = document.querySelectorAll(".js-slide");
+      
+
+      gsap.from(".rectangle", {
+        x: "-250%",
+        duration: 2,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: ".rectangle",
+          start: "top 80%",
+          end: "top 50%",
+          scrub: true
+        }
+      });
+    
+      gsap.from(".rectangle2", {
+        x: "250%",
+        duration: 2,
+        ease: "power2.Out",
+        scrollTrigger: {
+          trigger: ".rectangle2",
+          start: "top 80%",
+          end: "top 50%",
+          scrub: true
+        }
+      });
 
       window.addEventListener("load", () => {
         gsap
@@ -33,7 +58,7 @@ export class HomeComponent implements AfterViewInit {
               scrub: true,
             }
           })
-          .to("img", {
+          .to(".zoomin", {
             scale: 2,
             z: 350,
             transformOrigin: "center center",
@@ -203,6 +228,8 @@ export class HomeComponent implements AfterViewInit {
         });
       }
     })
+
+    
 
     }
   }

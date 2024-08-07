@@ -121,6 +121,7 @@ span {
   .arrow{
     margin: 8% 0 0 12%;
     width: 50px;
+    max-width: 50px;
     rotate: 200deg;
   }
 
