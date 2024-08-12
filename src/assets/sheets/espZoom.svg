@@ -49,19 +49,12 @@
        x="480.34387"
        y="609.65338" />
     <rect
-       style="fill:#d67f1f;fill-opacity:1;stroke-width:0.864894"
-       id="rect5"
-       width="127.38298"
-       height="121.35499"
-       x="278.49847"
-       y="230.89639" />
-    <rect
-       style="fill:#191970;fill-opacity:1;stroke-width:1.31862"
+       style="fill:#191970;fill-opacity:1;stroke-width:0.643855"
        id="rect6"
-       width="249.56065"
-       height="228.02499"
-       x="674.77802"
-       y="484.60919" />
+       width="121.85527"
+       height="111.33985"
+       x="781.02032"
+       y="542.55957" />
     <rect
        style="fill:#000000;stroke-width:0.720968"
        id="rect10"
@@ -70,32 +63,25 @@
        x="530.3692"
        y="-1.0939056" />
     <rect
-       style="fill:#191970;fill-opacity:1;stroke-width:1.31307"
+       style="fill:#191970;fill-opacity:1;stroke-width:1.43306"
        id="rect7"
-       width="140.05157"
-       height="140.92838"
-       x="266.75098"
-       y="486.06277" />
+       width="152.8493"
+       height="153.80623"
+       x="374.06641"
+       y="511.81845" />
     <rect
        style="fill:#d67f1f;fill-opacity:1;stroke-width:0.860595"
        id="rect8"
        width="165.98528"
        height="152.67241"
-       x="743.03906"
-       y="148.06221" />
+       x="753.77063"
+       y="145.91591" />
     <rect
-       style="fill:#30579c;fill-opacity:1;stroke-width:1.03693"
-       id="rect9"
-       width="106.67495"
-       height="98.915146"
-       x="506.68442"
-       y="163.60217" />
-    <rect
-       style="fill:#30579c;fill-opacity:1;stroke-width:0.505876"
-       id="rect12"
-       width="52.042435"
-       height="48.256737"
-       x="431.3269"
-       y="442.52292" />
+       style="fill:#d67f1f;fill-opacity:1;stroke-width:0.537005"
+       id="rect5"
+       width="79.091026"
+       height="75.348297"
+       x="538.2019"
+       y="166.50713" />
   </g>
 </svg>
