@@ -253,19 +253,19 @@ html.lenis body{
   animation: upDownS 5s infinite;
 }
 
-.cubeM[data-type="orange"] {
+.cubeM:nth-child(2) {
   z-index: 2;
-  background-color: #D67F1F; 
+  background-color: var(--pCem-4); 
   rotate: 25deg;
   top: 60%;
   left: 10%;
 }
 
-.cubeB[data-type="blue"] {
+.cubeB:nth-child(1) {
   z-index: 3;
   bottom: -5%;
   left: 5%;
-  background-color: midnightblue; 
+  background-color: var(--pCem-8); 
   rotate: -25deg;
 }
 
@@ -274,7 +274,7 @@ html.lenis body{
   top: 45%;
   left: 13%;
   rotate: -5deg;
-  background-color: #30579C; 
+  background-color: var(--pCem-6); 
 }
 
 /* seconds cubes */
@@ -283,20 +283,12 @@ html.lenis body{
   position: absolute;
   bottom: -25%;
   right: -10%;
-  background-color: #D67F1F; 
-  rotate: -25deg;
-}
-.cubeB[data-type="fix"] {
-  position: fixed;
-  bottom: -15%;
-  z-index: 999;
-  right: -10%;
-  background-color: #30579C; 
+  background-color: var(--pCem-4); 
   rotate: -25deg;
 }
 .cubeM[data-type="cian"] {
   z-index: 2;
-  background-color: #30579C; 
+  background-color: var(--pCem-6); 
   rotate: 25deg;
   top: 5%;
   right: 7%;
@@ -307,7 +299,7 @@ html.lenis body{
   bottom:  5%;
   left: 3%;
   rotate: -5deg;
-  background-color: midnightblue; 
+  background-color: var(--pCem-8); 
 }
 
 /* animaciones de cubos */

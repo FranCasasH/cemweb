@@ -12,3 +12,13 @@ html, body{
 body{
   overflow-x: hidden;
 }
+:root{
+  --pCem-1: #FF9900; 
+  --pCem-2: #FFC800;
+  --pCem-3: #FFE000;
+  --pCem-4: #FFF700;
+  --pCem-5: #B8F500;
+  --pCem-6: #95E214;
+  --pCem-7: #72CE27;
+  --pCem-8: #21B600;
+}
