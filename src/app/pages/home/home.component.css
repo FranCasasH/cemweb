@@ -253,7 +253,7 @@ html.lenis body{
   animation: upDownS 5s infinite;
 }
 
-.cubeM:nth-child(2) {
+.wrapper .cubeM:nth-child(2) {
   z-index: 2;
   background-color: var(--pCem-4); 
   rotate: 25deg;
@@ -261,7 +261,7 @@ html.lenis body{
   left: 10%;
 }
 
-.cubeB:nth-child(1) {
+.wrapper .cubeB:nth-child(1) {
   z-index: 3;
   bottom: -5%;
   left: 5%;
@@ -269,7 +269,7 @@ html.lenis body{
   rotate: -25deg;
 }
 
-.cubeS[data-type="cian"] {
+.wrapper .cubeS:nth-child(3) {
   z-index: 1;
   top: 45%;
   left: 13%;
@@ -279,14 +279,14 @@ html.lenis body{
 
 /* seconds cubes */
 
-.cubeB[data-type="orange"] {
+.outro .cubeB:nth-child(1) {
   position: absolute;
   bottom: -25%;
   right: -10%;
   background-color: var(--pCem-4); 
   rotate: -25deg;
 }
-.cubeM[data-type="cian"] {
+.outro .cubeM:nth-child(2) {
   z-index: 2;
   background-color: var(--pCem-6); 
   rotate: 25deg;
@@ -294,12 +294,27 @@ html.lenis body{
   right: 7%;
 }
 
-.cubeS[data-type="blue"] {
+.outro .cubeS:nth-child(3) {
   z-index: 3;
   bottom:  5%;
   left: 3%;
   rotate: -5deg;
   background-color: var(--pCem-8); 
+}
+
+.outro .cubeM:nth-child(4) {
+  z-index: 2;
+  background-color: var(--pCem-4); 
+  rotate: 25deg;
+  bottom: 5%;
+  left: 10%;
+}
+.outro .cubeB:nth-child(5) {
+  z-index: 4;
+  background-color: var(--pCem-6); 
+  rotate: 25deg;
+  left: -4%;
+  bottom: -4%;
 }
 
 /* animaciones de cubos */
