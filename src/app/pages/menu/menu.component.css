@@ -79,7 +79,7 @@ span {
 
 .cubeM[data-type="orange"] {
     z-index: 2;
-    background-color: #D67F1F; 
+    background-color: var(--pCem-4); 
     rotate: 25deg;
     top: 10%;
     left: 10%;
@@ -89,7 +89,7 @@ span {
     z-index: 3;
     top: -5%;
     left: -5%;
-    background-color: midnightblue; 
+    background-color: var(--pCem-8); 
     rotate: -25deg;
   }
 
@@ -98,7 +98,7 @@ span {
     top: 10%;
     left: 18%;
     rotate: -5deg;
-    background-color: #30579C; 
+    background-color: var(--pCem-6); 
   }
 
 /* 2d part */
@@ -106,7 +106,7 @@ span {
     position: absolute;
     bottom: -15%;
     right: -10%;
-    background-color: #D67F1F; 
+    background-color: var(--pCem-4); 
     rotate: -25deg;
   }
   .cubeB[data-type="fix"] {
@@ -114,7 +114,7 @@ span {
     bottom: -15%;
     z-index: 999;
     right: -10%;
-    background-color: #30579C; 
+    background-color: var(--pCem-6); 
     rotate: -25deg;
   }
   
@@ -127,7 +127,7 @@ span {
 
   .cubeM[data-type="cian"] {
     z-index: 2;
-    background-color: #30579C; 
+    background-color: var(--pCem-6); 
     rotate: 25deg;
     top: 5%;
     right: 7%;
@@ -138,7 +138,7 @@ span {
     bottom:  5%;
     left: 3%;
     rotate: -5deg;
-    background-color: midnightblue; 
+    background-color: var(--pCem-8); 
   }
 
   .hidden {
