@@ -395,10 +395,45 @@ section.things{
 }
 
 .contentzoom .section.hero {
-  background-image: url(https://fotografias.larazon.es/clipping/cmsimages01/2022/11/30/00E037B4-C20D-45B0-AE52-3AAA1B852D2A/98.jpg?crop=5239,2948,x0,y490&width=1900&height=1069&optimize=low&format=webply);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #EDF6F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  perspective: clamp(400px, 100vw, 1000px);
+}
+
+.gallery {
+  background-color: #EDF6F9;
+  display: flex;
+  gap: 1vw;
+  max-width: 1800px;
+  min-width: 500px;
+  height: 100%;
+  transform: translate(5%, -25%) rotate(-6deg) rotateX(10deg) rotateY(20deg);
+}
+
+.gallery_line {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  height: fit-content;
+  width: 34%;
+  animation: slide 30s linear infinite alternate;
+}
+
+.gallery_line img {
+  flex: 1 1 auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 .image-container {
