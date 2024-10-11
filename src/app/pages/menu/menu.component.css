@@ -13,10 +13,11 @@
     text-align: center;
 }
 .nav-wrapper {
-    cursor: none;
     width: 100%;
     height: 100vh;
     background: #edf6f9;
+    overflow: hidden;
+    position: relative;
 }
 
 nav {
@@ -45,11 +46,12 @@ span {
 .cursor {
     z-index: 9999;
     pointer-events: none;
-    position: fixed;
+    position: absolute;
     padding: 0.3rem;
     background-color: #ffffff;
     mix-blend-mode: difference;
     transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
 .hover-this:hover ~ .cursor {

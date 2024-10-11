@@ -15,9 +15,10 @@ export class MenuComponent implements AfterViewInit {
     if (typeof document !== 'undefined') {
       const links = document.querySelectorAll('nav > .hover-this');
       const cursor = document.querySelector('.cursor') as HTMLElement;
+      const navWrapper = document.querySelector('.nav-wrapper') as HTMLElement;
       const cubeBfix = document.querySelector('.cubeB[data-type="fix"]') as HTMLElement;
 
-        // Hide the cubeB with data-type="orange" initially
+      // Hide the cubeB with data-type="orange" initially
       cubeBfix.classList.add('hidden');
 
       // Show the cubeB with data-type="orange" after scrolling 100vh
@@ -46,8 +47,18 @@ export class MenuComponent implements AfterViewInit {
       const editCursor: EventListener = (e: Event) => {
         const event = e as MouseEvent;
         const { clientX: x, clientY: y } = event;
-        cursor.style.left = `${x}px`;
-        cursor.style.top = `${y}px`;
+        const rect = navWrapper.getBoundingClientRect();
+        const cursorX = x - rect.left;
+        const cursorY = y - rect.top;
+
+        // Ensure the cursor stays within the nav-wrapper
+        if (cursorX >= 0 && cursorX <= rect.width && cursorY >= 0 && cursorY <= rect.height) {
+          cursor.style.left = `${cursorX}px`;
+          cursor.style.top = `${cursorY}px`;
+          cursor.style.display = 'block';
+        } else {
+          cursor.style.display = 'none';
+        }
       };
 
       links.forEach(link => {

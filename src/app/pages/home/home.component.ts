@@ -22,7 +22,8 @@ export class HomeComponent implements AfterViewInit {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
       const slides = document.querySelectorAll(".js-slide");
-      
+      const cursor: HTMLElement | null = document.getElementById("cursor");
+      const inner: HTMLElement | null = document.querySelector(".inner");
 
       gsap.from(".rectangle", {
         x: "-250%",
@@ -230,38 +231,33 @@ export class HomeComponent implements AfterViewInit {
       }
     })
 
-    
-
-    }
-    if (typeof document !== 'undefined') {
-      const links = document.querySelectorAll('main > .hover-this');
-      const cursor = document.querySelector('.cursor') as HTMLElement;
-
-      const animateit: EventListener = function (this: HTMLElement, e: Event) {
-        const event = e as MouseEvent;
-        const span = this.querySelector('p') as HTMLElement;
-        const { offsetX: x, offsetY: y } = event;
-        const { offsetWidth: width, offsetHeight: height } = this;
-        const move = 25;
-        const xMove = (x / width) * (move * 2) - move;
-        const yMove = (y / height) * (move * 2) - move;
-        span.style.transform = `translate(${xMove}px, ${yMove}px)`;
-        if (event.type === 'mouseleave') span.style.transform = '';
-      };
-
-      const editCursor: EventListener = (e: Event) => {
-        const event = e as MouseEvent;
-        const { clientX: x, clientY: y } = event;
-        cursor.style.left = `${x}px`;
-        cursor.style.top = `${y}px`;
-      };
-
-      links.forEach(link => {
-        link.addEventListener('mousemove', animateit);
-        link.addEventListener('mouseleave', animateit);
+    if (cursor && inner) {
+      const innerX = gsap.quickTo(inner, "x", {
+        duration: 0.65,
+        ease: "power4"
       });
+      const innerY = gsap.quickTo(inner, "y", {
+        duration: 0.65,
+        ease: "power4"
+      });
+    
+      const xCursorTo = gsap.quickTo(cursor, "x", {
+        duration: 0.5,
+        ease: "power4"
+      });
+      const yCursorTo = gsap.quickTo(cursor, "y", {
+        duration: 0.5,
+        ease: "power4"
+      });
+    
+      document.addEventListener("mousemove", (e: MouseEvent) => {
+        xCursorTo(e.clientX);
+        yCursorTo(e.clientY);
+        innerX(e.clientX);
+        innerY(e.clientY);
+      });
+    }
 
-      window.addEventListener('mousemove', editCursor);
     }
   }
 }
