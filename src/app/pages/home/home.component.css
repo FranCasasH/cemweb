@@ -164,7 +164,6 @@ section.info{
 .animatedBox {
   position: absolute;
   z-index: 999;
-  top: 27%;
   left: 70%;
   rotate: 25deg;
   background-color: midnightblue;
@@ -184,11 +183,60 @@ section.info{
     top: 25%;
   }
 }
+@media(max-width: 992px){
+  .animatedBox{
+    animation: upDown1 2s infinite;
+    left: 65%;
+  }
+  @keyframes upDown1{
+    0%, 100% {
+      top: 45%;
+    }
+    50% {
+      top: 43%;
+    }
+  }
+}
+@media(max-width: 768px){
+  .animatedBox{
+    animation: upDown2 2s infinite;
+    left: 60%;
+  }
+  @keyframes upDown2 {
+    0%, 100% {
+      top: 55%;
+    }
+    50% {
+      top: 53%;
+    }
+  }
+}
+@media(max-width: 480px){
+  .animatedBox{
+    animation: upDown3 2s infinite;
+    left: 50%;
+  }
+  @keyframes upDown3 {
+    0%, 100% {
+      top: 70%;
+    }
+    50% {
+      top: 68%;
+    }
+  }
+}
+
 
 .animatedBox a {
   display: block;
   width: 50%;
 }
+@media(min-width: 600px) and (max-width: 604px){
+  .appInfo p{
+    padding: 1.1em;
+  }
+}
+
 section.pinned{
   position: absolute;
   top: 400vh;
@@ -229,7 +277,16 @@ section.whitespace{
   background-color: black;
   clip-path: polygon(45% 0%, 55% 0%, 55% 100%, 45% 100%);
 }
-
+@media (max-width: 1600px){
+  h2{
+    font-size: 170px;
+  }
+}
+@media (max-width: 1440px){
+  h2{
+    font-size: 150px;
+  }
+}
 @media (max-width: 1366px){
   h2{
     font-size: 144px;
@@ -655,8 +712,8 @@ text{
   position: absolute;
   z-index: 1;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
   top: 100%;
   transition: transform 0.6s;
   rotate: 15deg;
@@ -750,9 +807,13 @@ text{
 }
 
 /* Media queries for other classes */
-
+@media(max-width: 1600px){
+  .card{
+    width: 330px;
+    height: 330px;
+  }
+}
 @media (max-width: 1200px) {
-
   .card {
     width: 250px;
     height: 380px;
