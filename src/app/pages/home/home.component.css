@@ -71,13 +71,16 @@ h1{
   top: 270vh;
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 .outro h1{
-  position: absolute;
+  align-self: center;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: max-content;
+  transform: translate(-50%, -50%); */
+  width: 60%;
   font-size: 40px;
   font-weight: lighter;
   text-align: center;
@@ -303,7 +306,7 @@ html.lenis body{
 
 .outro .cubeB:nth-child(1) {
   position: absolute;
-  bottom: -25%;
+  /* bottom: -25%; */
   right: -10%;
   background-color: var(--pCem-4); 
   rotate: -25deg;
@@ -668,10 +671,61 @@ text{
 }
 
 @media (max-width: 950px) {
-
   .stack {
     grid-area: stacked;
   }
+
+  .outro .cubeB:nth-child(1){
+    right: -15%;
+  }
+  .outro .cubeM:nth-child(4){
+    left: 14%;
+  }
+  .outro .cubeB:nth-child(5){
+    left: -12%;
+  }
+}
+
+@media(max-width: 850px){
+  .outro .cubeB:nth-child(1){
+    right: -21%;
+  }
+  .outro .cubeM:nth-child(2){
+    right: 3%;
+  }
+  .outro .cubeB:nth-child(5){
+    left: -19%;
+  }
+}
+
+@media(max-width: 800px){
+  .wrapper .cubeB:nth-child(1){
+    left: 3%;
+  }
+  .wrapper .cubeM:nth-child(2){
+    top: 65%;
+  }
+  .wrapper .cubeS:nth-child(3){
+    left: 15%;
+  }
+}
+
+@media(max-width: 750px){
+  .outro .cubeB:nth-child(1){
+    right: -23%;
+  }
+  .outro .cubeM:nth-child(2){
+    right: 3%;
+    top: -2%;
+  }
+  .outro .cubeM:nth-child(4){
+    left: 19%;
+    bottom: 0%;
+  }
+  .outro .cubeB:nth-child(5){
+    left: -22%;
+  }
+
 }
 
 @media (max-width: 650px) {
@@ -680,6 +734,59 @@ text{
     height: 260px;
   }
 }
+
+@media(max-width: 570px){
+  .cubeB{
+    width: 100px;
+    height: 100px;
+  }
+  .cubeM{
+      width: 50px;
+      height: 50px;
+  }
+  .cubeS{
+      display: none;
+  }
+  .outro .cubeB:nth-child(1){
+    right: -8%;
+  }
+  .outro .cubeM:nth-child(2){
+    right: 6%;
+    top: 5%;
+  }
+  .outro .cubeM:nth-child(4){
+    left: 11%;
+    bottom: 0%;
+  }
+  .outro .cubeB:nth-child(5){
+    left: -10%;
+  }
+
+  .wrapper .cubeB:nth-child(1){
+    left: 0%;
+  }
+}
+
+@media(max-width: 400px){
+  .outro h1{
+    width: 80%;
+  }
+  .outro .cubeB:nth-child(1){
+    right: -25%;
+  }
+  .outro .cubeM:nth-child(2){
+    right: -3%;
+    top: 5%;
+  }
+  .outro .cubeM:nth-child(4){
+    left: 5%;
+    bottom: 0%;
+  }
+  .outro .cubeB:nth-child(5){
+    left: -26%;
+  }
+}
+
 .laCumbreText{
   text-align: center;
   justify-content: center;
