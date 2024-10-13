@@ -215,6 +215,8 @@ section.info{
   .animatedBox{
     animation: upDown3 2s infinite;
     left: 50%;
+    width: 80px;
+    height: 80px;
   }
   @keyframes upDown3 {
     0%, 100% {
@@ -222,6 +224,20 @@ section.info{
     }
     50% {
       top: 68%;
+    }
+  }
+}
+@media(max-width: 375px){
+  .animatedBox{
+    animation: upDown3 2s infinite;
+    left: 50%;
+  }
+  @keyframes upDown3 {
+    0%, 100% {
+      top: 98%;
+    }
+    50% {
+      top: 96%;
     }
   }
 }
@@ -713,6 +729,20 @@ section.things{
   text-align: center;
   width: 50%;
 }
+
+@media(max-width: 992px){
+  .infoProf p{
+    width: 70%;
+  }
+}
+@media(max-width: 480px){
+  .infoProf p{
+    width: 85%;
+    font-size: 35px;
+  }
+}
+
+
 .map h2{
   color: black;
   font-family: "Roboto", sans-serif;
