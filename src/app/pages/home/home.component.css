@@ -534,14 +534,21 @@ section.things{
   font-family: "Roboto", sans-serif;
   font-weight: 200;
   font-size: 100px;
-  margin: 0 0 0 25%;
+  margin: 0 0 0 0;
   letter-spacing: -4px;
   padding: 0 2% 0 0;
   color: #edf6f9;
 }
 
 .things h2:nth-child(2){
-  margin: 0 0 0 50%;
+  position: relative;
+  transform: translateX(50%);
+}
+.things h2:nth-child(3){
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-100%);
 }
 
 
@@ -550,19 +557,69 @@ section.things{
   left: 26%;
   top: 5%;
   background-color: #edf6f9;
-  width: 270px;
+  width: 22%;
   height: 25px ;
 }
 
 .rectangle2{
   position: absolute;
   left: 50%;
-  top: 18%;
+  top: 20%;
   background-color: #edf6f9;
-  width: 300px;
+  width: 22%;
   height: 25px ;
 }
 
+@media(max-width: 768px){
+  .things h2{
+    font-size: 80px;
+  }
+  .rectangle, .rectangle2{
+    height: 15px;
+  }
+  .rectangle2{
+    top: 17%;
+  }
+}
+@media(max-width: 600px){
+  .things h2{
+    font-size: 70px;
+  }
+  .rectangle, .rectangle2{
+    height: 13px;
+  }
+  .rectangle2{
+    top: 15%;
+  }
+}
+@media(max-width: 480px){
+  .things h2{
+    font-size: 60px;
+  }
+  .rectangle, .rectangle2{
+    height: 10px;
+  }
+  .rectangle{
+    top: 4%;
+  }
+  .rectangle2{
+    top: 13%;
+  }
+}
+@media(max-width: 375px){
+  .things h2{
+    font-size: 50px;
+  }
+  .rectangle, .rectangle2{
+    height: 8px;
+  }
+  .rectangle{
+    top: 3.5%;
+  }
+  .rectangle2{
+    top: 11%;
+  }
+}
 
 .wrapperzoom,
 .contentzoom {
