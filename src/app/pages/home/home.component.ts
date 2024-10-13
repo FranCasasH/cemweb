@@ -342,7 +342,9 @@ export class HomeComponent implements AfterViewInit {
                 height: () => window.innerHeight * (scrollDist + 3),
               });
             };
-                  const stack = document.querySelector(".stack") as HTMLElement;
+
+            // first card stack
+            const stack = document.querySelector(".stack") as HTMLElement;
             const cards = Array.from(stack.children)
               .reverse()
               .filter((child) => (child as HTMLElement).classList.contains("card"));
@@ -373,7 +375,41 @@ export class HomeComponent implements AfterViewInit {
                   stack.insertBefore(card, stack.firstElementChild);
                 }, 1200);
               }
-            });      
+            }); 
+
+          // second card stack
+          const stack2 = document.querySelector(".stack2") as HTMLElement;
+          const cards2 = Array.from(stack.children)
+            .reverse()
+            .filter((child) => (child as HTMLElement).classList.contains("card2"));
+          
+          cards2.forEach((card2) => stack2.appendChild(card2));
+          
+          function moveCard2() {
+            const lastCard = stack2.lastElementChild as HTMLElement;
+            if (lastCard.classList.contains("card2")) {
+              lastCard.classList.add("swap");
+          
+              setTimeout(() => {
+                lastCard.classList.remove("swap");
+                stack2.insertBefore(lastCard, stack2.firstElementChild);
+              }, 1200);
+            }
+          }
+          
+          let autoplayInterval2 = setInterval(moveCard2, 4000);
+          
+          stack2.addEventListener("click", function (e) {
+            const card2 = (e.target as HTMLElement).closest(".card2") as HTMLElement;
+            if (card2 && card2 === stack2.lastElementChild) {
+              card2.classList.add("swap");
+          
+              setTimeout(() => {
+                card2.classList.remove("swap");
+                stack2.insertBefore(card2, stack2.firstElementChild);
+              }, 1200);
+            }
+          });    
     }
   }
 }
