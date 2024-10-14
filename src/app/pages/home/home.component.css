@@ -183,6 +183,12 @@ section.info{
     top: 25%;
   }
 }
+@media(min-width: 1600px){
+  .animatedBox{
+    width: 120px;
+    height: 120px;
+  }
+}
 @media(max-width: 992px){
   .animatedBox{
     animation: upDown1 2s infinite;
@@ -293,7 +299,7 @@ section.whitespace{
   background-color: black;
   clip-path: polygon(45% 0%, 55% 0%, 55% 100%, 45% 100%);
 }
-@media (max-width: 1600px){
+@media (max-width: 1620px){
   h2{
     font-size: 170px;
   }
@@ -585,6 +591,11 @@ section.things{
   width: 22%;
   height: 25px ;
 }
+@media(min-width: 1920px){
+  .rectangle2{
+    top: 13%;
+  }
+}
 
 @media(max-width: 768px){
   .things h2{
@@ -594,7 +605,7 @@ section.things{
     height: 15px;
   }
   .rectangle2{
-    top: 17%;
+    top: 16%;
   }
 }
 @media(max-width: 600px){
@@ -605,7 +616,7 @@ section.things{
     height: 13px;
   }
   .rectangle2{
-    top: 15%;
+    top: 14%;
   }
 }
 @media(max-width: 480px){
@@ -619,7 +630,7 @@ section.things{
     top: 4%;
   }
   .rectangle2{
-    top: 13%;
+    top: 12%;
   }
 }
 @media(max-width: 375px){
@@ -633,7 +644,7 @@ section.things{
     top: 3.5%;
   }
   .rectangle2{
-    top: 11%;
+    top: 10%;
   }
 }
 
@@ -897,6 +908,12 @@ text{
 }
 
 /* Media queries for other classes */
+@media(min-width: 1600px){
+  .outro .cubeB:nth-child(1){
+    right: -5%;
+  }
+}
+
 @media(max-width: 1600px){
   .card{
     width: 330px;

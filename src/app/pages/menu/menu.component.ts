@@ -16,7 +16,7 @@ export class MenuComponent implements AfterViewInit {
       const links = document.querySelectorAll('nav > .hover-this');
       const cursor = document.querySelector('.cursor') as HTMLElement;
       const navWrapper = document.querySelector('.nav-wrapper') as HTMLElement;
-      const cubeBfix = document.querySelector('.cubeB[data-type="fix"]') as HTMLElement;
+      const cubeBfix = document.querySelector('.nav-wrapper .cubeB:nth-child(6)') as HTMLElement;
 
       // Hide the cubeB with data-type="orange" initially
       cubeBfix.classList.add('hidden');
