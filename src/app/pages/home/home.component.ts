@@ -3,11 +3,12 @@ import { isPlatformBrowser } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { ScrollToPlugin } from 'gsap/all';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
 
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, ScrollToPlugin);
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,6 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 })
 export class HomeComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
