@@ -145,7 +145,6 @@ section.info{
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
 }
 .appInfo{
   position:relative;
@@ -165,6 +164,7 @@ section.info{
   position: absolute;
   z-index: 999;
   left: 70%;
+  top: 30%;
   rotate: 25deg;
   background-color: midnightblue;
   height: 100px;
@@ -175,13 +175,49 @@ section.info{
   animation: upDown 2s infinite;
 }
 
+.appInfo .cubeB:nth-child(3){
+  z-index: 3;
+  bottom: 18%;
+  left: -7%;
+  background-color: var(--pCem-8); 
+  rotate: -30deg;
+}
+.appInfo .cubeM:nth-child(4){
+  z-index: 3;
+  bottom: -5%;
+  left: 10%;
+  background-color: var(--pCem-4); 
+  rotate: 15deg;
+}
+.appInfo .cubeS:nth-child(5){
+  z-index: 3;
+  bottom: 5%;
+  left: 23%;
+  background-color: var(--pCem-6); 
+  rotate: 5deg;
+}
+.appInfo .cubeB:nth-child(6){
+  z-index: 3;
+  top: 18%;
+  right: -10%;
+  background-color: var(--pCem-4); 
+  rotate: 15deg;
+}
+.appInfo .cubeS:nth-child(7){
+  z-index: 3;
+  top: 8%;
+  right: 10%;
+  background-color: var(--pCem-8); 
+  rotate: -10deg;
+}
+
 @keyframes upDown {
   0%, 100% {
-    top: 27%;
+    transform: translateY(-3%);
   }
   50% {
-    top: 25%;
-  }
+      transform: translateY(3%);
+}
 }
 @media(min-width: 1600px){
   .animatedBox{
@@ -191,64 +227,61 @@ section.info{
 }
 @media(max-width: 992px){
   .animatedBox{
-    animation: upDown1 2s infinite;
     left: 65%;
+    top: 35%;
   }
-  @keyframes upDown1{
-    0%, 100% {
-      top: 45%;
-    }
-    50% {
-      top: 43%;
-    }
+}
+@media(max-width: 850px){
+  .appInfo .cubeS:nth-child(7){
+    right: 3%;
   }
 }
 @media(max-width: 768px){
   .animatedBox{
-    animation: upDown2 2s infinite;
     left: 60%;
+    top: 43%;
   }
-  @keyframes upDown2 {
-    0%, 100% {
-      top: 55%;
-    }
-    50% {
-      top: 53%;
-    }
+  .appInfo .cubeS:nth-child(5){
+    left: 30%;
+  }
+}
+@media(max-width: 570px){
+  .appInfo .cubeM:nth-child(4){
+    bottom: 5%;
   }
 }
 @media(max-width: 480px){
   .animatedBox{
-    animation: upDown3 2s infinite;
     left: 50%;
     width: 80px;
     height: 80px;
-  }
-  @keyframes upDown3 {
-    0%, 100% {
-      top: 70%;
-    }
-    50% {
-      top: 68%;
-    }
+    top: 63%;
   }
 }
 @media(max-width: 375px){
   .animatedBox{
-    animation: upDown3 2s infinite;
     left: 50%;
+    top: 85%;
   }
-  @keyframes upDown3 {
-    0%, 100% {
-      top: 98%;
-    }
-    50% {
-      top: 96%;
-    }
+  .appInfo .cubeB:nth-child(6){
+    right: -20%;
   }
 }
-
-
+@media(max-width: 320px){
+  .animatedBox{
+    left: 75%;
+    top: 47%;
+  }
+  .appInfo .cubeB:nth-child(3){
+    left: -25%;
+  }
+  .appInfo .cubeM:nth-child(4){
+    bottom: 3%;
+  }
+  .appInfo .cubeB:nth-child(6){
+    right: -25%;
+  }
+}
 .animatedBox a {
   display: block;
   width: 50%;
@@ -299,19 +332,31 @@ section.whitespace{
   background-color: black;
   clip-path: polygon(45% 0%, 55% 0%, 55% 100%, 45% 100%);
 }
-@media (max-width: 1620px){
+@media (max-width: 1600px){
   h2{
     font-size: 170px;
+  }
+  .revealer{
+    width: 102px;
+    height: 102px;
   }
 }
 @media (max-width: 1440px){
   h2{
     font-size: 150px;
   }
+  .revealer{
+    width: 90px;
+    height: 90px;
+  }
 }
 @media (max-width: 1366px){
   h2{
     font-size: 144px;
+  }
+  .revealer{
+    width: 86.4px;
+    height: 86.4px;
   }
 }
 @media (max-width: 1280px){
@@ -321,31 +366,17 @@ section.whitespace{
 }
 @media (max-width: 1024px){
   h2{
-    font-size: 120px;
-  }
-  .revealer{
-    left: 26%;
+    font-size: 105px;
   }
 }
 @media (max-width: 992px){
   h2{
     font-size: 115px;
   }
-  .appRow{
-    height: 200px;
-  }
-  .revealer{
-    margin-top: 250px;
-    height: 100px;
-    width: 100px;
-  }
 }
 @media (max-width: 850px){
   h2{
     font-size: 110px;
-  }
-  .revealer{
-    left: 19%;
   }
 }
 @media (max-width: 800px){
@@ -354,8 +385,19 @@ section.whitespace{
   }
 }
 @media (max-width: 768px){
+  h2{
+    font-size: 80px;
+  }
   .revealer{
-    left: 18%;
+    width: 48px;
+    height: 48px;
+  }
+  .appRow{
+    height: 100px;
+    transform: translateY(200%);
+  }
+  .info{
+    margin: 0 0 -10%;
   }
 }
 @media (max-width: 600px){
@@ -365,19 +407,18 @@ section.whitespace{
 }
 @media (max-width: 480px){
   h2{
-    font-size: 66px;
+    font-size: 50px;
+  }
+  .revealer{
+    width: 30px;
+    height: 30px;
   }
   .appRow{
     height: 120px;
+    transform: translateY(133%);
   }
-  .revealer{
-    margin-top: 140px;
-    height: 80px;
-    width: 80px;
-    left: 13%;
-  }
-  section.info{
-    height: 60vh;
+  .info{
+    margin: 0 0 -30%;
   }
 }
 @media (max-width: 375px){
@@ -387,15 +428,6 @@ section.whitespace{
   .appRow{
     height: 110px;
   }
-  .revealer{
-    margin-top: 135px;
-    height: 60px;
-    width: 60px;
-    left: 14%;
-  }
-  section.info{
-    height: 50vh;
-  }
 }
 @media (max-width: 375px){
   h2{
@@ -403,15 +435,6 @@ section.whitespace{
   }
   .appRow{
     height: 110px;
-  }
-  .revealer{
-    margin-top: 135px;
-    height: 60px;
-    width: 60px;
-    left: 14%;
-  }
-  section.info{
-    height: 50vh;
   }
 }
 
@@ -489,7 +512,7 @@ html.lenis body{
 
 .outro .cubeB:nth-child(1) {
   position: absolute;
-  /* bottom: -25%; */
+  top: 27%;
   right: -10%;
   background-color: var(--pCem-4); 
   rotate: -25deg;
@@ -522,9 +545,8 @@ html.lenis body{
   background-color: var(--pCem-6); 
   rotate: 25deg;
   left: -4%;
-  bottom: -4%;
+  bottom: 30%;
 }
-
 /* animaciones de cubos */
 @keyframes upDownM {
   0%, 100% {
@@ -739,6 +761,42 @@ section.things{
   color: black;
   text-align: center;
   width: 50%;
+}
+
+.infoProf .cubeB:nth-child(2){
+  z-index: 3;
+  top: 29%;
+  left: -10%;
+  background-color: var(--pCem-4); 
+  rotate: -20deg;
+}
+.infoProf .cubeM:nth-child(3){
+  z-index: 3;
+  top: 25%;
+  left: 13%;
+  background-color: var(--pCem-8); 
+  rotate: 10deg;
+}
+.infoProf .cubeS:nth-child(4){
+  z-index: 3;
+  top: 25%;
+  left: 5%;
+  background-color: var(--pCem-6); 
+  rotate: -10deg;
+}
+.infoProf .cubeM:nth-child(5){
+  z-index: 3;
+  top: 35%;
+  right: -5%;
+  background-color: var(--pCem-4); 
+  rotate: -10deg;
+}
+.infoProf .cubeS:nth-child(6){
+  z-index: 3;
+  top: 41%;
+  right: 15%;
+  background-color: var(--pCem-8); 
+  rotate: -10deg;
 }
 
 @media(max-width: 992px){
