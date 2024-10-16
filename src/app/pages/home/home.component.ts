@@ -2,11 +2,13 @@ import { Component, AfterViewInit, Inject, PLATFORM_ID, OnInit } from '@angular/
 import { isPlatformBrowser } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { ScrollToPlugin } from 'gsap/all';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, ScrollToPlugin);
 
 @Component({
   selector: 'app-home',
@@ -17,12 +19,12 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class HomeComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       const wrapperEl = document.querySelector(".js-wrapper");
       const slides = document.querySelectorAll(".js-slide");
-      
+      const cursor: HTMLElement | null = document.getElementById("cursor");
+      const inner: HTMLElement | null = document.querySelector(".inner");
 
       gsap.from(".rectangle", {
         x: "-250%",
@@ -215,23 +217,199 @@ export class HomeComponent implements AfterViewInit {
         }
       })
       
-    ScrollTrigger.create({
-      trigger: ".whitespace",
-      start: "top 50%",
-      end: "bottom bottom",
-      scrub: 1,
-      onUpdate: (self) => {
-        const scale = 1 + 15 * self.progress;
-        gsap.to(".revealer", {
-          scale: scale,
-          ease: "none",
-          duration: 0,
-        });
-      }
-    })
+      ScrollTrigger.create({
+        trigger: ".whitespace",
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: 1,
+        onUpdate: (self) => {
+          const scale = 1 + 15 * self.progress;
+         gsap.to(".revealer", {
+            scale: scale,
+            ease: "none",
+            duration: 0,
+          });
+        }
+      })
 
+      if (cursor && inner) {
+      const innerX = gsap.quickTo(inner, "x", {
+        duration: 0.65,
+        ease: "power4"
+      });
+      const innerY = gsap.quickTo(inner, "y", {
+        duration: 0.65,
+        ease: "power4"
+      });
     
+      const xCursorTo = gsap.quickTo(cursor, "x", {
+        duration: 0.5,
+        ease: "power4"
+      });
+      const yCursorTo = gsap.quickTo(cursor, "y", {
+        duration: 0.5,
+        ease: "power4"
+      });
+    
+      document.addEventListener("mousemove", (e: MouseEvent) => {
+        xCursorTo(e.clientX);
+        yCursorTo(e.clientY);
+        innerX(e.clientX);
+        innerY(e.clientY);
+      });
+      }
 
+            gsap.set('#thePoint', { rotation: -37, transformOrigin: 'center' });
+            
+            // Definir la duración especial para la animación de desplazamiento
+            const scrollDist = 15;
+            
+            gsap.set('#scrollDist', {
+              width: '100%',
+              height: () => window.innerHeight * (scrollDist + 3),
+            });
+            
+            // Obtener las dimensiones del mapa y configurar el contenedor
+            const map = document.getElementById('map')!;
+            const mapWidth = map.getBoundingClientRect().width;
+            const mapHeight = map.getBoundingClientRect().height;
+            
+            gsap.set('#container', {
+              position: 'fixed',
+              width: mapWidth,
+              height: mapHeight,
+              left: '50%',
+              xPercent: -50,
+              top: 0,
+              autoAlpha: 1,
+            });
+            
+            // Definir los tiempos de escalonamiento para revelar objetos
+            const staggerTimes = [0.095, 0.105, 0.120, 0.130, 0.160, 0.180, 0.200];
+            
+            // Crear una línea de tiempo de GSAP con un disparador de desplazamiento
+            gsap.timeline({
+              defaults: { duration: 0.3, ease: 'none' },
+              onComplete: final,
+              scrollTrigger: {
+                trigger: '#scrollDist',
+                start: 'top top',
+                end: () => window.innerHeight * scrollDist ,
+                scrub: 1,
+                onUpdate: ({ progress }) => {
+                  console.log(progress);
+                },
+              },
+            })
+              .to('#thePoint', {
+                motionPath: {
+                  path: "#theRoute",
+                  align: "#theRoute",
+                  alignOrigin: [0.5, 0.5],
+                  autoRotate: -90,
+                },
+              }, 0)
+              .from('#theRoute', { strokeDasharray: '0 100%' }, 0) 
+              .from('.stop', {
+                autoAlpha: 0,
+                y: '-=100',
+                duration: 0.005,
+                stagger: (index: number) => staggerTimes[index],
+              }, 0);
+            
+            // Definir la función final para la animación final
+            function final() {
+              gsap.to('.last', { scale: 2, duration: 0.2, repeat: 1, yoyo: true });
+            }
+            
+            // Mover el contenedor para que #thePoint siempre esté en la misma posición
+            let povDelay = 1; // 1 = sin demora
+            let pos = { x: -mapWidth / 2, y: -mapHeight / 2 };
+            const xSet = gsap.quickSetter('#container', "x", "px");
+            const ySet = gsap.quickSetter('#container', "y", "px");
+            
+            gsap.ticker.add(() => {
+              pos.x += (-gsap.getProperty('#thePoint', 'x') as number - pos.x) * povDelay;
+              pos.y += (-gsap.getProperty('#thePoint', 'y') as number - pos.y) * povDelay;
+              xSet(pos.x);
+              ySet(pos.y);
+            });
+            
+            // Manejar el evento de redimensionamiento de la ventana
+            window.onresize = () => {
+              gsap.set('#scrollDist', {
+                width: '100%',
+                height: () => window.innerHeight * (scrollDist + 3),
+              });
+            };
+
+            // first card stack
+            const stack = document.querySelector(".stack") as HTMLElement;
+            const cards = Array.from(stack.children)
+              .reverse()
+              .filter((child) => (child as HTMLElement).classList.contains("card"));
+            
+            cards.forEach((card) => stack.appendChild(card));
+            
+            function moveCard() {
+              const lastCard = stack.lastElementChild as HTMLElement;
+              if (lastCard.classList.contains("card")) {
+                lastCard.classList.add("swap");
+            
+                setTimeout(() => {
+                  lastCard.classList.remove("swap");
+                  stack.insertBefore(lastCard, stack.firstElementChild);
+                }, 1200);
+              }
+            }
+            
+            let autoplayInterval = setInterval(moveCard, 4000);
+            
+            stack.addEventListener("click", function (e) {
+              const card = (e.target as HTMLElement).closest(".card") as HTMLElement;
+              if (card && card === stack.lastElementChild) {
+                card.classList.add("swap");
+            
+                setTimeout(() => {
+                  card.classList.remove("swap");
+                  stack.insertBefore(card, stack.firstElementChild);
+                }, 1200);
+              }
+            }); 
+
+          // second card stack
+          const stack2 = document.querySelector(".stack2") as HTMLElement;
+          const cards2 = Array.from(stack.children)
+            .reverse()
+            .filter((child) => (child as HTMLElement).classList.contains("card2"));
+          
+          cards2.forEach((card2) => stack2.appendChild(card2));
+          
+          function moveCard2() {
+            const lastCard = stack2.lastElementChild as HTMLElement;
+            if (lastCard.classList.contains("card2")) {
+              lastCard.classList.add("swap");
+          
+              setTimeout(() => {
+                lastCard.classList.remove("swap");
+                stack2.insertBefore(lastCard, stack2.firstElementChild);
+              }, 1200);
+            }
+          }
+          
+          let autoplayInterval2 = setInterval(moveCard2, 4000);
+          
+          stack2.addEventListener("click", function (e) {
+            const card2 = (e.target as HTMLElement).closest(".card2") as HTMLElement;
+            if (card2 && card2 === stack2.lastElementChild) {
+              card2.classList.add("swap");
+          
+              setTimeout(() => {
+                card2.classList.remove("swap");
+                stack2.insertBefore(card2, stack2.firstElementChild);
+              }, 1200);
+            }
+          });    
     }
   }
 }
