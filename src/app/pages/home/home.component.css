@@ -270,7 +270,7 @@ section.info{
 @media(max-width: 320px){
   .animatedBox{
     left: 75%;
-    top: 47%;
+    top: 45%;
   }
   .appInfo .cubeB:nth-child(3){
     left: -25%;
@@ -753,6 +753,7 @@ section.things{
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 .infoProf p{
   font-family: "Roboto", sans-serif;
@@ -765,36 +766,36 @@ section.things{
 
 .infoProf .cubeB:nth-child(2){
   z-index: 3;
-  top: 29%;
+  top: 27%;
   left: -10%;
   background-color: var(--pCem-4); 
   rotate: -20deg;
 }
 .infoProf .cubeM:nth-child(3){
   z-index: 3;
-  top: 25%;
-  left: 13%;
+  top: 16%;
+  left: 14%;
   background-color: var(--pCem-8); 
   rotate: 10deg;
 }
 .infoProf .cubeS:nth-child(4){
   z-index: 3;
-  top: 25%;
-  left: 5%;
+  top: 16%;
+  left: 6%;
   background-color: var(--pCem-6); 
   rotate: -10deg;
 }
 .infoProf .cubeM:nth-child(5){
   z-index: 3;
-  top: 35%;
+  bottom: 25%;
   right: -5%;
   background-color: var(--pCem-4); 
   rotate: -10deg;
 }
 .infoProf .cubeS:nth-child(6){
   z-index: 3;
-  top: 41%;
-  right: 15%;
+  bottom: 5%;
+  right: 17%;
   background-color: var(--pCem-8); 
   rotate: -10deg;
 }
