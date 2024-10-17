@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-  .logCon{
+.logCon{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #edf6f9;
-  }
-
+}
 .letrasCem{
-    width: 500px;
+    width: 30%;
+    min-width: 400px;
+    max-width: 600px;
     text-align: center;
 }
 .nav-wrapper {
@@ -79,6 +80,13 @@ span {
     animation: upDownS 5s infinite;
 }
 
+.nav-wrapper .cubeB:nth-child(3) {
+    z-index: 3;
+    top: -5%;
+    left: -5%;
+    background-color: var(--pCem-8); 
+    rotate: -25deg;
+}
 .nav-wrapper .cubeM:nth-child(4) {
     z-index: 2;
     background-color: var(--pCem-4); 
@@ -87,13 +95,6 @@ span {
     left: 10%;
 }
 
-.nav-wrapper .cubeB:nth-child(3) {
-    z-index: 3;
-    top: -5%;
-    left: -5%;
-    background-color: var(--pCem-8); 
-    rotate: -25deg;
-}
 
 .nav-wrapper .cubeS:nth-child(5) {
     z-index: 1;
@@ -104,21 +105,13 @@ span {
 }
 
 /* 2d part */
-.nav-wrapper .cubeB:nth-child(7) {
+.nav-wrapper .cubeB:nth-child(6) {
     position: absolute;
-    bottom: -15%;
+    bottom: -10%;
     right: -10%;
     background-color: var(--pCem-4); 
     rotate: -25deg;
     z-index: 998;
-  }
-.nav-wrapper .cubeB:nth-child(6) {
-    position: fixed;
-    bottom: -15%;
-    z-index: 999;
-    right: -10%;
-    background-color: var(--pCem-6); 
-    rotate: -25deg;
   }
   
   .arrow{
@@ -128,7 +121,7 @@ span {
     rotate: 200deg;
   }
 
-.nav-wrapper .cubeM:nth-child(8) {
+.nav-wrapper .cubeM:nth-child(7) {
     z-index: 2;
     background-color: var(--pCem-6); 
     rotate: 25deg;
@@ -136,13 +129,13 @@ span {
     right: 7%;
 }
 
-.nav-wrapper .cubeS:nth-child(9) {
+.nav-wrapper .cubeS:nth-child(8) {
     z-index: 3;
     bottom:  5%;
     left: 3%;
     rotate: -5deg;
     background-color: var(--pCem-8); 
-  }
+}
 
   .hidden {
     display: none;
@@ -182,15 +175,24 @@ span {
 
 /* Media querys for cubes */
 @media(min-width: 1600px){
-    .nav-wrapper .cubeB:nth-child(6), .nav-wrapper .cubeB:nth-child(7){
+    .nav-wrapper .cubeB:nth-child(6){
         right: -7%;
         bottom: -9%;
     }
 }
 @media(min-width: 1920px){
-    .nav-wrapper .cubeB:nth-child(6), .nav-wrapper .cubeB:nth-child(7){
+    .nav-wrapper .cubeB:nth-child(6){
         right: -5%;
         bottom: -8%;
+    }
+}
+@media(max-width: 1024px){
+    .nav-wrapper .cubeB:nth-child(3){
+        top: -6%;
+        left: -6%;
+    }
+    .nav-wrapper .cubeM:nth-child(4) {
+        top: 5%;
     }
 }
 @media(min-width: 901px) {
@@ -210,50 +212,65 @@ span {
           padding: 20px 0;
           display: inline-block;
     }
-    .nav-wrapper .cubeS:nth-child(5){
-        left: 23%;
+    .nav-wrapper .cubeB:nth-child(3){
+        left: -9%;
     }
     .nav-wrapper .cubeM:nth-child(4){
-        left: 14%;
+        left: 9%;
     }
-    .nav-wrapper .cubeB:nth-child(6){
-        right: -15%;
+    .nav-wrapper .cubeS:nth-child(5){
+        left: 18%;
     }
 }
 @media(max-width: 800px){
     .nav-wrapper .cubeB:nth-child(3){
         top: -8%;
-        left: -10%;
+        left: -12%;
     }
     .nav-wrapper .cubeM:nth-child(4){
-        left: 10%;
+        left: 7%;
+        top: 10%;
     }
     .nav-wrapper .cubeS:nth-child(5){
-        left: 18%;
-        top: 27%;
+        left: 14%;
+        top: 21%;
     }
 }
-@media(max-width: 670px){
+@media(max-width: 720px){
     .nav-wrapper .cubeB:nth-child(3){
         top: -8%;
         left: -22%;
     }
     .nav-wrapper .cubeM:nth-child(4){
         top: 11%;
-        left: 4%;
+        left: 2%;
     }
     .nav-wrapper .cubeS:nth-child(5){
         left: 13%;
+        top: 25%;
+    }
+    .nav-wrapper .cubeM:nth-child(7){
+        right: 0%;
+    }
+}
+@media(max-width: 670px){
+    .nav-wrapper .cubeB:nth-child(3){
+        top: -8%;
+        left: -26%;
+    }
+    .nav-wrapper .cubeM:nth-child(4){
+        top: 13%;
+        left: -8%;
+    }
+    .nav-wrapper .cubeS:nth-child(5){
+        left: 2%;
         top: 30%;
     }
     .nav-wrapper .cubeB:nth-child(6){
         right: -17%;
     }
-    .nav-wrapper .cubeB:nth-child(7){
-        right: -17%;
-    }
-    .nav-wrapper .cubeM:nth-child(8){
-        right: 0%;
+    .nav-wrapper .cubeM:nth-child(7){
+        right: -10%;
     }
 }
 @media(max-width: 570px){
@@ -269,6 +286,9 @@ span {
         display: none;
     }
 
+    .letrasCem{
+        min-width: 350px;
+    }
 
     .nav-wrapper .cubeB:nth-child(3){
         top: 0%;
@@ -279,36 +299,77 @@ span {
         left: 1%;
     }
     .nav-wrapper .cubeB:nth-child(6){
-        right: -7%;
-        bottom: -2%;
+        right: -5%;
+        bottom: -6%;
+    }
+    .nav-wrapper .cubeM:nth-child(7){
+        right: 0%;
     }
     .arrow{
         margin: 14% 0 0 18%;
         width: 40px;
     }
-    .nav-wrapper .cubeB:nth-child(7){
-        right: -5%;
-        bottom: -6%;
-    }
-    .nav-wrapper .cubeM:nth-child(8){
-        right: 0%;
-    }
 }
-@media(max-width: 440px){
+@media(max-width: 480px){
     .nav-wrapper .cubeB:nth-child(3){
-        top: -15%;
+        top: -7%;
         left: -10%;
     }
     .nav-wrapper .cubeM:nth-child(4){
-        top: 6%;
-        left: -13%;
+        top: 25%;
+        left: 1%;
     }
-    .nav-wrapper .cubeB:nth-child(7){
-        right: -10%;
-        bottom: -11%;
+    .nav-wrapper .cubeB:nth-child(6){
+        right: -5%;
+        bottom: -2%;
     }
-    .nav-wrapper .cubeM:nth-child(8){
-        right: -4%;
-        top: -6%;
+    .nav-wrapper .cubeM:nth-child(7){
+        top: 18%;
+        right: -9%;
+    }
+}
+@media(max-width: 375px){
+    span{
+        font-size: 32px;
+    }
+    .nav-wrapper .cubeB:nth-child(3){
+        top: -10%;
+        left: -16%;
+    }
+    .nav-wrapper .cubeM:nth-child(4){
+        top: 29%;
+        left: 1%;
+    }
+    .nav-wrapper .cubeB:nth-child(6){
+        right: -5%;
+        bottom: -2%;
+    }
+    .nav-wrapper .cubeM:nth-child(7){
+        top: 22%;
+        right: -9%;
+    }
+}
+@media(max-width: 320px){
+    span{
+        font-size: 28px;
+    }
+    .letrasCem{
+        min-width: 300px;
+    }
+    .nav-wrapper .cubeB:nth-child(3){
+        top: -11%;
+        left: -20%;
+    }
+    .nav-wrapper .cubeM:nth-child(4){
+        top: 29%;
+        left: 1%;
+    }
+    .nav-wrapper .cubeB:nth-child(6){
+        right: -5%;
+        bottom: -2%;
+    }
+    .nav-wrapper .cubeM:nth-child(7){
+        top: 30%;
+        right: -9%;
     }
 }

@@ -16,21 +16,21 @@ export class MenuComponent implements AfterViewInit {
       const links = document.querySelectorAll('nav > .hover-this');
       const cursor = document.querySelector('.cursor') as HTMLElement;
       const navWrapper = document.querySelector('.nav-wrapper') as HTMLElement;
-      const cubeBfix = document.querySelector('.nav-wrapper .cubeB:nth-child(6)') as HTMLElement;
+      // const cubeBfix = document.querySelector('.nav-wrapper .cubeB:nth-child(6)') as HTMLElement;
 
       // Hide the cubeB with data-type="orange" initially
-      cubeBfix.classList.add('hidden');
+      // cubeBfix.classList.add('hidden');
 
       // Show the cubeB with data-type="orange" after scrolling 100vh
-      window.addEventListener('scroll', () => {
-        if (window.scrollY >= window.innerHeight) {
-          cubeBfix.classList.add('visible');
-          cubeBfix.classList.remove('hidden');
-        } else {
-          cubeBfix.classList.add('hidden');
-          cubeBfix.classList.remove('visible');
-        }
-      });
+      // window.addEventListener('scroll', () => {
+      //   if (window.scrollY >= window.innerHeight) {
+      //     cubeBfix.classList.add('visible');
+      //     cubeBfix.classList.remove('hidden');
+      //   } else {
+      //     cubeBfix.classList.add('hidden');
+      //     cubeBfix.classList.remove('visible');
+      //   }
+      // });
 
       const animateit: EventListener = function (this: HTMLElement, e: Event) {
         const event = e as MouseEvent;
