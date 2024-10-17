@@ -1182,12 +1182,69 @@ iframe{
 }
 footer{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content:start;
+  align-items: end;
   height: 100vh;
-  background-image: url('../../../assets/sheets/divisor.svg');
-  background-repeat: no-repeat;
-  background-size: 108%;
-  background-position: top;
 }
+#ambulancia{
+  position: absolute;
+  margin-bottom: -10%;
+  max-width: 50%;
+  height: auto;
+}
+.socialIcon{
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../assets/sheets/icons/instagram.svg);
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-color: var(--pCem-6);
+  position: absolute;
+  left: 30%;
+  bottom: 5%;
+  z-index: -1;
+  padding: 50px;
+  rotate: 30deg;
+}
+.socialIcon2{
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../assets/sheets/icons/facebook.svg);
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-color: var(--pCem-8);
+  position: absolute;
+  left: 20%;
+  bottom: 3%;
+  z-index: -1;
+  padding: 40px;
+  rotate: -15deg;
+}
+.socialIcon3{
+  width: 50px;
+  height: 50px;
+  background-image: url(../../../assets/sheets/icons/envelope.svg);
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-color: var(--pCem-8);
+  position: absolute;
+  left: 15%;
+  bottom: 6%;
+  z-index: -1;
+  rotate: -25deg;
+}
+.copyright{
+  background-color: black;
+  width: 100%;
+  height: 7.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rights{
+  color: white;
 
+}

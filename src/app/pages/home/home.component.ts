@@ -410,6 +410,26 @@ export class HomeComponent implements AfterViewInit {
               }, 1200);
             }
           });    
+
+          const ambulancia = document.getElementById('ambulancia');
+          if (ambulancia) {
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  gsap.fromTo(ambulancia, 
+                    { x: '-100%' }, 
+                    { 
+                      x: '350%', 
+                      duration: 5 // Ajusta la duración según sea necesario
+                    }
+                  );
+                  observer.unobserve(ambulancia); // Deja de observar una vez que la animación ha comenzado
+                }
+              });
+            }, { threshold: 0.1 }); // Ajusta el umbral según sea necesario
+          
+            observer.observe(ambulancia);
+          }
     }
   }
 }
