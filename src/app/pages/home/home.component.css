@@ -962,11 +962,6 @@ text{
   cursor: pointer;
 }
 
-.prueba{
-  width: 100%;
-  height: 150vh;
-}
-
 .laCumbre{
   display: flex;
   position: absolute;
@@ -1213,6 +1208,28 @@ text{
   -webkit-box-shadow: -27px -10px 56px 0px rgba(0,0,0,0.18);
   -moz-box-shadow: -27px -10px 56px 0px rgba(0,0,0,0.18);
 }
+
+@media(max-width: 1300px){
+  .laCumbreText, .laFaldaText{
+    height: 250px;
+    width: 250px;
+  }
+  iframe{
+    height: 250px;
+    width: 250px;
+  }
+
+  .laCumbre{
+    right: -10%;
+    top: 170%;
+  }
+  
+  .laFalda{
+    right: 40%;
+    top: 227%;
+  }
+}
+
 iframe{
   box-shadow: -37px 26px 56px 0px rgba(0,0,0,0.2);
 -webkit-box-shadow: -37px 26px 56px 0px rgba(0,0,0,0.2);
@@ -1243,11 +1260,11 @@ iframe{
   height: auto;
 }
 .logosRed:nth-child(1){
-  margin: 0 2% 10% 0;
+  margin: 0 1% 10% 0;
   min-width: 200px;
 }
 .logosRed:nth-child(3){
-  margin:10% 0 0 3%;
+  margin:10% 0 0 6%;
   min-width: 200px;
 }
 #siem{
@@ -1261,6 +1278,7 @@ iframe{
 #andOf{
   color: black;
   font-weight: 200;
+  padding: 0;
 }
 
 /* CUBES */
