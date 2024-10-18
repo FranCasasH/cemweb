@@ -1715,8 +1715,8 @@ footer{
   height: auto;
 }
 .socialIcon{
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   background-image: url(../../../assets/sheets/icons/instagram.svg);
   background-position: center;
   background-size: 80%;
@@ -1724,14 +1724,13 @@ footer{
   background-color: var(--pCem-6);
   position: absolute;
   left: 40%;
-  bottom: 45%;
+  bottom: 35%;
   z-index: -1;
-  padding: 50px;
   rotate: 30deg;
 }
 .socialIcon2{
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   background-image: url(../../../assets/sheets/icons/facebook.svg);
   background-position: center;
   background-size: 80%;
@@ -1739,9 +1738,8 @@ footer{
   background-color: var(--pCem-8);
   position: absolute;
   left: 25%;
-  bottom: 30%;
+  bottom: 20%;
   z-index: -1;
-  padding: 40px;
   rotate: -15deg;
 }
 .socialIcon3{
@@ -1753,8 +1751,8 @@ footer{
   background-repeat: no-repeat;
   background-color: var(--pCem-8);
   position: absolute;
-  left: 15%;
-  bottom: 60%;
+  left: 17%;
+  bottom: 45%;
   z-index: -1;
   rotate: -25deg;
 }
@@ -1768,6 +1766,7 @@ footer{
 }
 .rights{
   color: white;
+  font-family: "Roboto", serif;
 }
 /* CUBES */
 footer .cubeB:nth-child(1){
@@ -1824,6 +1823,12 @@ footer .cubeS:nth-child(5){
     left: 23%;
   }
 }
+@media(max-width: 900px){
+  footer .cubeM:nth-child(3){
+    bottom: 23%;
+    right: 27%;
+  }
+}
 @media(max-width: 800px){
   #ambulancia{
     transform: translateY(-5%);
@@ -1833,6 +1838,44 @@ footer .cubeS:nth-child(5){
   }
   .socialIcon2{
     left: 23%;
+  }
+}
+@media(max-width: 700px){
+  footer .cubeB:nth-child(1){
+    bottom: 50%;
+    left: -17%;
+  }
+  footer .cubeB:nth-child(2){
+    bottom: 30%;
+    right: -20%;
+  }
+  footer .cubeM:nth-child(3){
+    bottom: 19%;
+    right: 24%;
+  }
+  .socialIcon{
+    left: 43%;
+  }
+  .socialIcon2{
+    left: 28%;
+  }
+  .socialIcon3{
+    left: 20%;
+    bottom: 35%;
+  }
+}
+@media(max-width: 570px){
+  footer .cubeB:nth-child(1){
+    bottom: 50%;
+    left: -7%;
+  }
+  footer .cubeB:nth-child(2){
+    bottom: 40%;
+    right: 0%;
+  }
+  footer .cubeM:nth-child(3){
+    bottom: 19%;
+    right: 24%;
   }
 }
 @media(max-width: 480px){
@@ -1845,6 +1888,24 @@ footer .cubeS:nth-child(5){
   .socialIcon2{
     left: 27%;
   }
+  footer .cubeB:nth-child(2){
+    bottom: 40%;
+    right: -10%;
+  }
+}
+@media(max-width: 375px){
+  footer .cubeB:nth-child(1){
+    bottom: 50%;
+    left: -13%;
+  }
+  footer .cubeB:nth-child(2){
+    bottom: 55%;
+    right: -15%;
+  }
+  footer .cubeM:nth-child(3){
+    bottom: 19%;
+    right: 16%;
+  }
 }
 @media(max-width: 320px){
   #ambulancia{
@@ -1856,5 +1917,17 @@ footer .cubeS:nth-child(5){
   }
   .socialIcon2{
     left: 29%;
+  }
+  footer .cubeB:nth-child(1){
+    bottom: 50%;
+    left: -13%;
+  }
+  footer .cubeB:nth-child(2){
+    bottom: 55%;
+    right: -15%;
+  }
+  footer .cubeM:nth-child(3){
+    bottom: 19%;
+    right: 16%;
   }
 }
