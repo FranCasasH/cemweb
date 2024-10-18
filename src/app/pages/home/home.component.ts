@@ -258,90 +258,190 @@ export class HomeComponent implements AfterViewInit {
         innerY(e.clientY);
       });
       }
+// Configuraciones para pantallas grandes
+const largeScreenConfig = () => {
+  gsap.set('#thePoint', { rotation: -37, transformOrigin: 'center' });
 
-            gsap.set('#thePoint', { rotation: -37, transformOrigin: 'center' });
-            
-            // Definir la duración especial para la animación de desplazamiento
-            const scrollDist = 15;
-            
-            gsap.set('#scrollDist', {
-              width: '100%',
-              height: () => window.innerHeight * (scrollDist + 3),
-            });
-            
-            // Obtener las dimensiones del mapa y configurar el contenedor
-            const map = document.getElementById('map')!;
-            const mapWidth = map.getBoundingClientRect().width;
-            const mapHeight = map.getBoundingClientRect().height;
-            
-            gsap.set('#container', {
-              position: 'fixed',
-              width: mapWidth,
-              height: mapHeight,
-              left: '50%',
-              xPercent: -50,
-              top: 0,
-              autoAlpha: 1,
-            });
-            
-            // Definir los tiempos de escalonamiento para revelar objetos
-            const staggerTimes = [0.095, 0.105, 0.120, 0.130, 0.160, 0.180, 0.200];
-            
-            // Crear una línea de tiempo de GSAP con un disparador de desplazamiento
-            gsap.timeline({
-              defaults: { duration: 0.3, ease: 'none' },
-              onComplete: final,
-              scrollTrigger: {
-                trigger: '#scrollDist',
-                start: 'top top',
-                end: () => window.innerHeight * scrollDist ,
-                scrub: 1,
-                onUpdate: ({ progress }) => {
-                  console.log(progress);
-                },
-              },
-            })
-              .to('#thePoint', {
-                motionPath: {
-                  path: "#theRoute",
-                  align: "#theRoute",
-                  alignOrigin: [0.5, 0.5],
-                  autoRotate: -90,
-                },
-              }, 0)
-              .from('#theRoute', { strokeDasharray: '0 100%' }, 0) 
-              .from('.stop', {
-                autoAlpha: 0,
-                y: '-=100',
-                duration: 0.005,
-                stagger: (index: number) => staggerTimes[index],
-              }, 0);
-            
-            // Definir la función final para la animación final
-            function final() {
-              gsap.to('.last', { scale: 2, duration: 0.2, repeat: 1, yoyo: true });
-            }
-            
-            // Mover el contenedor para que #thePoint siempre esté en la misma posición
-            let povDelay = 1; // 1 = sin demora
-            let pos = { x: -mapWidth / 2, y: -mapHeight / 2 };
-            const xSet = gsap.quickSetter('#container', "x", "px");
-            const ySet = gsap.quickSetter('#container', "y", "px");
-            
-            gsap.ticker.add(() => {
-              pos.x += (-gsap.getProperty('#thePoint', 'x') as number - pos.x) * povDelay;
-              pos.y += (-gsap.getProperty('#thePoint', 'y') as number - pos.y) * povDelay;
-              xSet(pos.x);
-              ySet(pos.y);
-            });
-            
-            // Manejar el evento de redimensionamiento de la ventana
-            window.onresize = () => {
-              gsap.set('#scrollDist', {
-                width: '100%',
-                height: () => window.innerHeight * (scrollDist + 3),
-              });
-            };
+  const scrollDist = 15;
+  gsap.set('#scrollDist', {
+    width: '100%',
+    height: () => window.innerHeight * (scrollDist + 3),
+  });
+
+  const map = document.getElementById('map')!;
+  const mapWidth = map.getBoundingClientRect().width;
+  const mapHeight = map.getBoundingClientRect().height;
+
+  gsap.set('#container', {
+    position: 'fixed',
+    width: mapWidth,
+    height: mapHeight,
+    left: '50%',
+    xPercent: -50,
+    top: 0,
+    autoAlpha: 1,
+  });
+
+  const staggerTimes = [0.095, 0.105, 0.120, 0.130, 0.160, 0.180, 0.200];
+
+  gsap.timeline({
+    defaults: { duration: 0.3, ease: 'none' },
+    onComplete: final,
+    scrollTrigger: {
+      trigger: '#scrollDist',
+      start: 'top top',
+      end: () => window.innerHeight * scrollDist,
+      scrub: 1,
+      onUpdate: ({ progress }) => {
+        console.log(progress);
+      },
+    },
+  })
+    .to('#thePoint', {
+      motionPath: {
+        path: "#theRoute",
+        align: "#theRoute",
+        alignOrigin: [0.5, 0.5],
+        autoRotate: -90,
+      },
+    }, 0)
+    .from('#theRoute', { strokeDasharray: '0 100%' }, 0)
+    .from('.stop', {
+      autoAlpha: 0,
+      y: '-=100',
+      duration: 0.005,
+      stagger: (index: number) => staggerTimes[index],
+    }, 0);
+
+  function final() {
+    gsap.to('.last', { scale: 2, duration: 0.2, repeat: 1, yoyo: true });
+  }
+
+  let povDelay = 1;
+  let pos = { x: -mapWidth / 2, y: -mapHeight / 2 };
+  const xSet = gsap.quickSetter('#container', "x", "px");
+  const ySet = gsap.quickSetter('#container', "y", "px");
+
+  gsap.ticker.add(() => {
+    pos.x += (-gsap.getProperty('#thePoint', 'x') as number - pos.x) * povDelay;
+    pos.y += (-gsap.getProperty('#thePoint', 'y') as number - pos.y) * povDelay;
+    xSet(pos.x);
+    ySet(pos.y);
+  });
+
+  window.onresize = () => {
+    gsap.set('#scrollDist', {
+      width: '100%',
+      height: () => window.innerHeight * (scrollDist + 3),
+    });
+  };
+};
+
+// Configuraciones para pantallas pequeñas
+const smallScreenConfig = () => {
+  gsap.set('#thePoint', { rotation: -37, transformOrigin: 'center' });
+
+  const scrollDist = 17.5; // Ajusta según sea necesario
+  gsap.set('#scrollDist', {
+    width: '100%',
+    height: () => window.innerHeight * (scrollDist + 2),
+  });
+
+  const map = document.getElementById('map')!;
+  const mapWidth = map.getBoundingClientRect().width;
+  const mapHeight = map.getBoundingClientRect().height;
+
+  gsap.set('#container', {
+    position: 'fixed',
+    width: mapWidth,
+    height: mapHeight,
+    left: '50%',
+    xPercent: -50,
+    top: 0,
+    autoAlpha: 1,
+  });
+
+  const staggerTimes = [0.095, 0.105, 0.120, 0.130, 0.160, 0.180, 0.200];
+
+  gsap.timeline({
+    defaults: { duration: 0.3, ease: 'none' },
+    onComplete: final,
+    scrollTrigger: {
+      trigger: '#scrollDist',
+      start: 'top top',
+      end: () => window.innerHeight * scrollDist,
+      scrub: 1,
+      onUpdate: ({ progress }) => {
+        console.log(progress);
+      },
+    },
+  })
+    .to('#thePoint', {
+      motionPath: {
+        path: "#theRoute",
+        align: "#theRoute",
+        alignOrigin: [0.5, 0.5],
+        autoRotate: -90,
+      },
+    }, 0)
+    .from('#theRoute', { strokeDasharray: '0 100%' }, 0)
+    .from('.stop', {
+      autoAlpha: 0,
+      y: '-=100',
+      duration: 0.005,
+      stagger: (index: number) => staggerTimes[index],
+    }, 0);
+
+  function final() {
+    gsap.to('.last', { scale: 2, duration: 0.2, repeat: 1, yoyo: true });
+  }
+
+  let povDelay = 1;
+  let pos = { x: -mapWidth / 2, y: -mapHeight / 2 };
+  const xSet = gsap.quickSetter('#container', "x", "px");
+  const ySet = gsap.quickSetter('#container', "y", "px");
+
+  gsap.ticker.add(() => {
+    pos.x += (-gsap.getProperty('#thePoint', 'x') as number - pos.x) * povDelay;
+    pos.y += (-gsap.getProperty('#thePoint', 'y') as number - pos.y) * povDelay;
+    xSet(pos.x);
+    ySet(pos.y);
+  });
+
+  window.onresize = () => {
+    gsap.set('#scrollDist', {
+      width: '100%',
+      height: () => window.innerHeight * (scrollDist + 2),
+    });
+  };
+};
+
+const updateXValue = () => {
+  const textElement = document.querySelector('.stop.last') as HTMLElement;
+  if (window.innerWidth < 1300) {
+    textElement.setAttribute('x', '520');
+  } else {
+    textElement.setAttribute('x', '820'); // Valor original o el que desees para resoluciones mayores
+  }
+};
+
+// Detectar el tamaño de la pantalla y aplicar la configuración correspondiente
+const mediaQuery = window.matchMedia('(max-width: 1300px)'); 
+
+const applyConfig = (e: MediaQueryList | MediaQueryListEvent) => {
+  if (e.matches) {
+    smallScreenConfig();
+  } else {
+    largeScreenConfig();
+  }
+};
+
+applyConfig(mediaQuery);
+
+mediaQuery.addEventListener('change', applyConfig);
+
+window.addEventListener('load', updateXValue);
+
 
             // first card stack
             const stack = document.querySelector(".stack") as HTMLElement;
