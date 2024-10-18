@@ -1770,7 +1770,7 @@ footer{
   background-color: var(--pCem-8);
   position: absolute;
   left: 17%;
-  bottom: 45%;
+  bottom: 42%;
   z-index: -1;
   rotate: -25deg;
 }
