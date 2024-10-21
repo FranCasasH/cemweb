@@ -1,0 +1,13 @@
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+img{
+    width: 60%;
+}
+.text{
+    width: 60%;
+    
+}

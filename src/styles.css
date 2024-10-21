@@ -7,18 +7,19 @@
 html, body{
   width: 100%;
   height: 100%;
-  background-color: #edf6f9;
+  background-color: #cce2ea;
 }
 body{
   overflow-x: hidden;
 }
 :root{
+  --background:#cce2ea;
   --pCem-1: #FF9900; 
   --pCem-2: #FFC800;
   --pCem-3: #FFE000;
   --pCem-4: #FFC800;
   --pCem-5: #B8F500;
-  --pCem-6: #1D6D19;
+  --pCem-6: #1d6d19;
   --pCem-7: #95E214;
   --pCem-8: rgb(1, 94, 1);
   --pBermudez-c: #20BDB3;
