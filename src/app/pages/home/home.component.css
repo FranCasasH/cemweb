@@ -46,7 +46,7 @@ h1{
 }
 .card{
   position: absolute;
-  width: 50%;
+  width: 400px;
   height: 400px;
   overflow: hidden;
 }
@@ -116,6 +116,36 @@ h1 a p{
 @media (max-width: 900px){
   .wrapper{
     padding-top: 20em;
+  }
+}
+@media(max-width: 800px){
+  .card{
+    width: 225px;
+    height: 225px;
+  }
+}
+@media(max-width: 650px){
+  .card{
+    width: 200px;
+    height: 200px;
+  }
+}
+@media(max-width: 500px){
+  .card{
+    width: 175px;
+    height: 175px;
+  }
+}
+@media(max-width: 400px){
+  .card{
+    width: 150px;
+    height: 150px;
+  }
+}
+@media(max-width: 320px){
+  .card{
+    width: 130px;
+    height: 130px;
   }
 }
 
@@ -1741,6 +1771,7 @@ footer{
   margin-bottom: -10%;
   max-width: 50%;
   height: auto;
+  z-index: 10;
 }
 .socialIcon{
   width: 80px;
@@ -1815,14 +1846,14 @@ footer .cubeM:nth-child(3){
   background-color: var(--pCem-4); 
   rotate: 15deg;
 }
-footer .cubeM:nth-child(4){
+/* footer .cubeM:nth-child(4){
   z-index: -1;
   top: 15%;
   right: 30%;
-  background-color: var(--pCem-6); 
+  background-color: var(--pCem-2); 
   rotate: -25deg;
-}
-footer .cubeS:nth-child(5){
+} */
+footer .cubeS:nth-child(4){
   z-index: -1;
   top: 25%;
   right: 10%;
